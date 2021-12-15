@@ -9,7 +9,7 @@ resource "aws_route53_health_check" "this" {
   invert_healthcheck = var.health_check_invert_healthcheck
   disabled           = var.health_check_disabled
   enable_sni         = var.health_check_enable_sni
-  regions            = var.health_check_regions
+  regions            = length(var.health_check_regions) != 0 ? var.health_check_regions : null
 
   tags = merge(
     {
